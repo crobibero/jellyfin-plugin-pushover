@@ -50,7 +50,7 @@ namespace Jellyfin.Plugin.Pushover.Api
             {
                 {"token", options.Token},
                 {"user", options.UserKey},
-                {"title", "Test Notification" },
+                {"title", "Test Notification"},
                 {"message", "This is a test notification from Jellyfin"}
             };
 
