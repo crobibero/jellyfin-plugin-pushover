@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using Jellyfin.Plugin.Pushover.Configuration;
 using MediaBrowser.Common.Net;
 using MediaBrowser.Controller.Entities;
@@ -55,11 +54,11 @@ namespace Jellyfin.Plugin.Pushover
                 body.Add("device", options.DeviceName);
 
             if (string.IsNullOrEmpty(request.Description))
-                body.Add("message", HttpUtility.UrlEncode(request.Name));
+                body.Add("message", request.Name);
             else
             {
-                body.Add("title", HttpUtility.UrlEncode(request.Name));
-                body.Add("message", HttpUtility.UrlEncode(request.Description));
+                body.Add("title", request.Name);
+                body.Add("message", request.Description);
             }
 
             _logger.LogDebug("PushOver to Token : {0} - {1} - {2}", options.Token, options.UserKey, request.Description);
