@@ -19,7 +19,7 @@ jellyfin_version: "10.4.0" # The earliest binary-compatible version
 owner: "crobibero"
 
 # The nicely-formatted name of the plugin
-nicename: "Pushover Notification"
+nicename: "Pushover"
 
 # A short description of the plugin
 description: "Sends notifications via Pushover Service"
@@ -27,7 +27,7 @@ description: "Sends notifications via Pushover Service"
 # A longer and more detailed description of the plugin; use multiple
 # lines as required for readability.
 overview: >
-    Uses third party Pushover Service
+    Uses third party Pushover Service to send notifications to a wide range of devices
 
 # The plugin category, in a general sense. These fields are dynamic.
 category: "Notifications"
