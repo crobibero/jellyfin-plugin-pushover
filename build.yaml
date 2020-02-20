@@ -8,7 +8,7 @@ guid: "F240D6BE-5743-441B-87F1-A70ECAC42642"
 # The version of the plugin, starting at 1. Note that the AssemblyVersion
 # and FileVersion flags in the `.csproj` file must have two additional
 # fiels, e.g. 1.0.0 to be built correctly.
-version: "2" # Please increment with each pull request
+version: "3" # Please increment with each pull request
 
 # The supported Jellyfin version, usually the earliest binary-compatible
 # version. Based on the Jellyfin components from NuGet.
@@ -19,7 +19,7 @@ jellyfin_version: "10.4.0" # The earliest binary-compatible version
 owner: "crobibero"
 
 # The nicely-formatted name of the plugin
-nicename: "Pushover Notification"
+nicename: "Pushover"
 
 # A short description of the plugin
 description: "Sends notifications via Pushover Service"
@@ -27,7 +27,7 @@ description: "Sends notifications via Pushover Service"
 # A longer and more detailed description of the plugin; use multiple
 # lines as required for readability.
 overview: >
-    Uses third party Pushover Service
+    Send messages to a wide range of devices through Pushover.
 
 # The plugin category, in a general sense. These fields are dynamic.
 category: "Notifications"
