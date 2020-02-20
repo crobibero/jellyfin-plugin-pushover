@@ -27,7 +27,7 @@ description: "Sends notifications via Pushover Service"
 # A longer and more detailed description of the plugin; use multiple
 # lines as required for readability.
 overview: >
-    Uses third party Pushover Service to send notifications to a wide range of devices
+    Send messages to a wide range of devices through Pushover.
 
 # The plugin category, in a general sense. These fields are dynamic.
 category: "Notifications"

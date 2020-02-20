@@ -44,7 +44,7 @@ namespace Jellyfin.Plugin.Pushover
         /// Gets the description.
         /// </summary>
         /// <value>The description.</value>
-        public override string Description => "Sends notifications via the Pushover Service.";
+        public override string Description => "Send notifications via Pushover.";
         
         /// <summary>
         /// Gets the instance.
