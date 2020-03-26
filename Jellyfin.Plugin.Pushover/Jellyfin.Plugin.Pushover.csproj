@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Jellyfin.Common" Version="10.5-*" />
-      <PackageReference Include="Jellyfin.Controller" Version="10.5-*" />
+      <PackageReference Include="Jellyfin.Common" Version="10.*" />
+      <PackageReference Include="Jellyfin.Controller" Version="10.*" />
     </ItemGroup>
 
     <ItemGroup>
