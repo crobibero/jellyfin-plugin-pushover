@@ -1,8 +1,8 @@
 ---
 name: "jellyfin-plugin-pushover"
 guid: "F240D6BE-5743-441B-87F1-A70ECAC42642"
-version: "3" # Please increment with each pull request
-jellyfin_version: "10.5.0" # The earliest binary-compatible version
+version: "3"
+jellyfin_version: "10.5.0"
 owner: "crobibero"
 nicename: "Pushover"
 description: "Send notifications via Pushover"
