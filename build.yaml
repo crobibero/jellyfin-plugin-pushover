@@ -1,15 +1,13 @@
 ---
-name: "jellyfin-plugin-pushover"
+name: "Pushover"
 guid: "F240D6BE-5743-441B-87F1-A70ECAC42642"
-version: "3"
-jellyfin_version: "10.5.0"
+version: "3.0.0.0"
+targetAbi: "10.5.0.0"
 owner: "crobibero"
-nicename: "Pushover"
-description: "Send notifications via Pushover"
-overview: "Send messages to a wide range of devices through Pushover."
+overview: "Send notifications via Pushover"
+description: "Send messages to a wide range of devices through Pushover."
 category: "Notifications"
 artifacts:
-  - "Jellyfin.Plugin.Pushover.dll"
-build_type: "dotnet"
-dotnet_configuration: "Release"
-dotnet_framework: "netstandard2.1"
+- "Jellyfin.Plugin.Pushover.dll"
+changelog: >
+  changelog
