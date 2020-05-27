@@ -5,7 +5,6 @@
 </head>
 <body>
     <div data-role="page" class="page type-interior pluginConfigurationPage pushOverConfigurationPage" data-require="emby-input,emby-button,emby-checkbox,emby-select">
-
         <div data-role="content">
             <div class="content-primary">
                 <form class="pushOverConfigurationForm">
@@ -47,15 +46,11 @@
                     <div>
                         <button is="emby-button" type="submit" class="raised button-submit block"><span>Save</span></button>
                     </div>
-
                 </form>
             </div>
         </div>
-
         <script type="text/javascript">
-
             (function () {
-
                 var PushoverPluginConfig = {
                     uniquePluginId: "F240D6BE-5743-441B-87F1-A70ECAC42642"
                 };
@@ -63,13 +58,11 @@
                 function loadUserConfig(page, userId) {
                     Dashboard.showLoadingMsg();
                     ApiClient.getPluginConfiguration(PushoverPluginConfig.uniquePluginId).then(function (config) {
-
                         var pushOverConfig = config.Options.filter(function (c) {
                             return userId === c.UserId;
-
                         })[0] || {};
 
-                        $('#chkEnablePushOver', page).checked(pushOverConfig.Enabled || false).checkboxradio("refresh");
+                        $('#chkEnablePushOver', page).checked = pushOverConfig.Enabled || false;
                         $('#txtPushOverAuthKey', page).val(pushOverConfig.Token || '');
                         $('#txtPushOverUserKey', page).val(pushOverConfig.UserKey || '');
                         $('#txtPushOverDeviceName', page).val(pushOverConfig.DeviceName || '');
@@ -105,7 +98,6 @@
                                 ApiClient.ajax({
                                     type: "POST",
                                     url: ApiClient.getUrl("Notification/Pushover/Test/" + c.UserId)
-
                                 }).then(function () {
                                     Dashboard.hideLoadingMsg();
                                 }, onError);
@@ -139,8 +131,7 @@
                         }
 
                         pushOverConfig.UserId = userId;
-
-                        pushOverConfig.Enabled = $('#chkEnablePushOver', form).checked();
+                        pushOverConfig.Enabled = $('#chkEnablePushOver', form).checked;
                         pushOverConfig.Token = $('#txtPushOverAuthKey', form).val();
                         pushOverConfig.UserKey = $('#txtPushOverUserKey', form).val();
                         pushOverConfig.DeviceName = $('#txtPushOverDeviceName', form).val();
@@ -150,9 +141,7 @@
 
                     return false;
                 });
-
             })();
-
         </script>
     </div>
 </body>
