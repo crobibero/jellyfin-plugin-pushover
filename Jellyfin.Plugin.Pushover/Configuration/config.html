@@ -62,7 +62,7 @@
                             return userId === c.UserId;
                         })[0] || {};
 
-                        $('#chkEnablePushOver', page).checked = pushOverConfig.Enabled || false;
+                        document.getElementById('chkEnablePushOver').checked = pushOverConfig.Enabled || false;
                         $('#txtPushOverAuthKey', page).val(pushOverConfig.Token || '');
                         $('#txtPushOverUserKey', page).val(pushOverConfig.UserKey || '');
                         $('#txtPushOverDeviceName', page).val(pushOverConfig.DeviceName || '');
@@ -131,7 +131,7 @@
                         }
 
                         pushOverConfig.UserId = userId;
-                        pushOverConfig.Enabled = $('#chkEnablePushOver', form).checked;
+                        pushOverConfig.Enabled = document.getElementById('chkEnablePushOver').checked;
                         pushOverConfig.Token = $('#txtPushOverAuthKey', form).val();
                         pushOverConfig.UserKey = $('#txtPushOverUserKey', form).val();
                         pushOverConfig.DeviceName = $('#txtPushOverDeviceName', form).val();
