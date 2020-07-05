@@ -1,8 +1,8 @@
 ---
 name: "Pushover"
 guid: "F240D6BE-5743-441B-87F1-A70ECAC42642"
-version: "3.0.0.0"
-targetAbi: "10.5.0.0"
+version: "4.0.0.0"
+targetAbi: "10.6.0.0"
 owner: "crobibero"
 overview: "Send notifications via Pushover"
 description: "Send messages to a wide range of devices through Pushover."
