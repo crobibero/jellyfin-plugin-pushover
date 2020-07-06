@@ -15,7 +15,7 @@ namespace Jellyfin.Plugin.Pushover
 {
     public class Notifier : INotificationService
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<Notifier> _logger;
         private readonly IHttpClient _httpClient;
         private readonly IJsonSerializer _jsonSerializer;
 

@@ -20,7 +20,7 @@ namespace Jellyfin.Plugin.Pushover.Api
     public class ServerApiEndpoints : IService
     {
         private readonly IHttpClient _httpClient;
-        private readonly ILogger _logger;
+        private readonly ILogger<TestNotification> _logger;
         private readonly IJsonSerializer _jsonSerializer;
 
         public ServerApiEndpoints(ILoggerFactory loggerFactory, IHttpClient httpClient, IJsonSerializer jsonSerializer)
