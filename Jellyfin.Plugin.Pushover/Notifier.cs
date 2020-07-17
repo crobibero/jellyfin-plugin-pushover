@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Jellyfin.Plugin.Pushover.Configuration;
+using Jellyfin.Data.Entities;
 using MediaBrowser.Common.Net;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Notifications;
@@ -14,7 +15,7 @@ namespace Jellyfin.Plugin.Pushover
 {
     public class Notifier : INotificationService
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<Notifier> _logger;
         private readonly IHttpClient _httpClient;
         private readonly IJsonSerializer _jsonSerializer;
 
@@ -32,7 +33,7 @@ namespace Jellyfin.Plugin.Pushover
             return options != null && IsValid(options) && options.Enabled;
         }
 
-        private static PushOverOptions GetOptions(BaseItem user)
+        private static PushOverOptions GetOptions(User user)
         {
             return Plugin.Instance.Configuration.Options
                 .FirstOrDefault(i => string.Equals(i.UserId, user.Id.ToString("N"), StringComparison.OrdinalIgnoreCase));
