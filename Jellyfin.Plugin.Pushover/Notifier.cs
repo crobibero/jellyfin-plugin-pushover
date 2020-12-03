@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Mime;
+using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Jellyfin.Plugin.Pushover.Configuration;
 using Jellyfin.Data.Entities;
+using MediaBrowser.Common.Json;
 using MediaBrowser.Common.Net;
-using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Notifications;
-using MediaBrowser.Model.Serialization;
 using Microsoft.Extensions.Logging;
 
 namespace Jellyfin.Plugin.Pushover
@@ -16,14 +19,14 @@ namespace Jellyfin.Plugin.Pushover
     public class Notifier : INotificationService
     {
         private readonly ILogger<Notifier> _logger;
-        private readonly IHttpClient _httpClient;
-        private readonly IJsonSerializer _jsonSerializer;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly JsonSerializerOptions _serializerOptions;
 
-        public Notifier(ILoggerFactory logManager, IHttpClient httpClient, IJsonSerializer jsonSerializer)
+        public Notifier(ILoggerFactory logManager, IHttpClientFactory httpClientFactory)
         {
             _logger = logManager.CreateLogger<Notifier>();
-            _httpClient = httpClient;
-            _jsonSerializer = jsonSerializer;
+            _httpClientFactory = httpClientFactory;
+            _serializerOptions = JsonDefaults.GetOptions();
         }
 
         public bool IsEnabledForUser(User user)
@@ -64,15 +67,15 @@ namespace Jellyfin.Plugin.Pushover
 
             _logger.LogDebug("PushOver to Token : {0} - {1} - {2}", options.Token, options.UserKey, request.Description);
 
-            var requestOptions = new HttpRequestOptions
-            {
-                Url = PluginConfiguration.Url,
-                RequestContent = _jsonSerializer.SerializeToString(body),
-                RequestContentType = "application/json",
-                LogErrorResponseBody = true
-            };
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Post, PluginConfiguration.Url);
+            requestMessage.Content = new StringContent(
+                JsonSerializer.Serialize(body, _serializerOptions),
+                Encoding.UTF8,
+                MediaTypeNames.Application.Json);
 
-            await _httpClient.Post(requestOptions).ConfigureAwait(false);
+            using var response = await _httpClientFactory.CreateClient(NamedClient.Default)
+                .SendAsync(requestMessage)
+                .ConfigureAwait(false);
         }
 
         private static bool IsValid(PushOverOptions options)
